@@ -1,0 +1,148 @@
+// Variables pour les couleurs
+$primary-color: #4B69FF;
+$secondary-color: #00C853;
+$warning-color: #FFAB00;
+$error-color: #FF4D4F;
+$background-color: #2A2B2F;
+$container-bg: #24262C;
+$input-bg: #292B31;
+$text-color: #F7F7F7;
+$input-focus-bg: #1E2026;
+
+// Mixin pour les boutons
+@mixin button-styles($bg-color, $hover-color) {
+  background-color: $bg-color;
+  color: white;
+  &:hover {
+    background-color: $hover-color;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+// Global Styles
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Urbanist", serif;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+// Layout Styles
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container-task {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  padding: 50px;
+  background-color: $container-bg;
+  border-radius: 20px;
+
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+
+    span {
+      color: $primary-color;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+// Buttons
+button {
+  border: none;
+  padding: 1rem;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background-color: gray;
+    pointer-events: none;
+    opacity: 0.7;
+    box-shadow: none;
+  }
+
+  &.btn-add {
+    @include button-styles($primary-color, darken($primary-color, 10%));
+  }
+
+  &.btn-update {
+    @include button-styles($secondary-color, darken($secondary-color, 10%));
+  }
+
+  &.btn-cancel {
+    @include button-styles($warning-color, darken($warning-color, 10%));
+  }
+
+  &.btn-edit {
+    @include button-styles($primary-color, rgba(75, 105, 255, 0.4));
+  }
+
+  &.btn-delete {
+    @include button-styles($error-color, darken($error-color, 10%));
+  }
+
+  &.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+// Input Styles
+input.input-form {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  border: none;
+  background-color: $input-bg;
+  color: $text-color;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &:focus {
+    outline: none;
+    border: 2px solid $primary-color;
+    background-color: $input-focus-bg;
+    color: white;
+    box-shadow: 0 4px 8px rgba(75, 105, 255, 0.2);
+  }
+}

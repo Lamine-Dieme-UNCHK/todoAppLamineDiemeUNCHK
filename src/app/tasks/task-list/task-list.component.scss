@@ -1,0 +1,26 @@
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #989CAA;
+}
+
+.task-item.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.task-item input[type="text"] {
+  max-width: 500px;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  border: none;
+  background-color: #292B31;
+  color: #989CAA;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}

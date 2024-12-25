@@ -1,0 +1,19 @@
+<form [formGroup]="taskForm" (ngSubmit)="submitTask()" class="task-form">
+ <div class="input-group">
+   <input
+    id="title"
+    type="text"
+    class="input-form"
+    formControlName="title"
+    placeholder="Entrez le titre de la tâche"
+    [class.error]="taskForm.get('title')?.invalid && taskForm.get('title')?.touched"
+  />
+  <p *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched">
+    Le titre est requis (min. 3 caractères).
+  </p>
+ </div>
+
+  <button type="submit" [disabled]="taskForm.invalid" class="btn-add">
+    {{ editMode ? 'Modifier la tâche' : 'Ajouter une tâche' }}
+  </button>
+</form>
