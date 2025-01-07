@@ -1,10 +1,11 @@
-<form [formGroup]="taskForm" (ngSubmit)="submitTask()" class="task-form">
+<form [formGroup]="taskForm" (ngSubmit)="submitTask()" class="task-form" name="taskForm">
  <div class="input-group">
    <input
-    id="title"
     type="text"
     class="input-form"
     formControlName="title"
+    [id]="taskForm.get('id')?.value"
+    [name]="taskForm.get('title')?.value"
     placeholder="Entrez le titre de la tâche"
     [class.error]="taskForm.get('title')?.invalid && taskForm.get('title')?.touched"
   />
@@ -13,7 +14,7 @@
   </p>
  </div>
 
-  <button type="submit" [disabled]="taskForm.invalid" class="btn-add">
+  <button type="submit" [disabled]="taskForm.invalid" class="btn-add" [title]="editMode ? 'Modifier la tâche' : 'Ajouter une tâche'">
     {{ editMode ? 'Modifier la tâche' : 'Ajouter une tâche' }}
   </button>
 </form>

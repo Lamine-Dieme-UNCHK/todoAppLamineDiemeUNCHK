@@ -3,6 +3,8 @@
   <div *ngIf="editModeTaskId === task.id">
     <input
       type="text"
+      [id]="task.id"
+      [name]="task.title"
       class="input-form"
       [(ngModel)]="editedTitle"
       placeholder="Modifier le titre de la tâche"
@@ -13,6 +15,8 @@
   <div *ngIf="editModeTaskId !== task.id">
     <input
       type="checkbox"
+      [id]="task.id"
+      [name]="task.title"
       [checked]="task.completed"
       (change)="toggleCompletion(task)"
     />
@@ -21,13 +25,13 @@
 
   <!-- Boutons pour mode édition -->
   <div *ngIf="editModeTaskId === task.id" class="actions">
-    <button (click)="updateTask(task)" class="btn-update btn-icon"><i class="fa fa-check"></i></button>
-    <button (click)="cancelEditMode()" class="btn-cancel btn-icon"><i class="fa fa-close"></i></button>
+    <button (click)="updateTask(task)" class="btn-update btn-icon" title="Modifier la tâche"><i class="fa fa-check"></i></button>
+    <button (click)="cancelEditMode()" class="btn-cancel btn-icon" title="Supprimer la tâche"><i class="fa fa-close"></i></button>
   </div>
 
   <!-- Boutons pour mode affichage normal -->
   <div *ngIf="editModeTaskId !== task.id" class="actions">
-    <button (click)="enableEditMode(task)" [disabled]="task.completed" class="btn-edit btn-icon"><i class="fa fa-pencil"></i></button>
-    <button (click)="deleteTask(task)" [disabled]="task.completed" class="btn-delete btn-icon"><i class="fa fa-trash-alt"></i></button>
+    <button (click)="enableEditMode(task)" [disabled]="task.completed" title="Mettre à jour la tâche" class="btn-edit btn-icon"><i class="fa fa-pencil"></i></button>
+    <button (click)="deleteTask(task)" [disabled]="task.completed" title="Annuler la modification de la tâche" class="btn-delete btn-icon"><i class="fa fa-trash-alt"></i></button>
   </div>
 </div>
